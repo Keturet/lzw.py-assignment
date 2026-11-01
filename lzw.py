@@ -6,7 +6,7 @@ MAX_CODES = 1 << 16
 
 
 def encode(text):
-    """Encode a string with LZW and return the list of integer codes."""
+
     if not text:
         return []
 
@@ -47,8 +47,7 @@ def decode(codes):
         if code in dictionary:
             entry = dictionary[code]
         elif code == next_code:
-            # The code is being defined in this very step (e.g. "ABA" in
-            # "ABABABA"): it must be previous + first char of previous.
+            
             entry = previous + previous[0]
         else:
             raise ValueError(f"Invalid LZW code: {code}")
@@ -64,8 +63,8 @@ def decode(codes):
 
 def readTextFromFile(path):
     """Return the content of a text file as a string."""
-    # latin-1 maps every byte 0-255 to one character; newline="" keeps
-    # line endings exactly as they are in the file.
+    # latin-1 maps every byte 0-255 to one character
+
     with open(path, "r", encoding="latin-1", newline="") as file:
         return file.read()
 
