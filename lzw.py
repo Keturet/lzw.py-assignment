@@ -1,8 +1,8 @@
 import struct
 import sys
 
-DICT_START = 256          # codes 0-255 are the single characters
-MAX_CODES = 1 << 16       # codes are stored in 2 bytes, so 0..65535
+DICT_START = 256          
+MAX_CODES = 1 << 16       
 
 
 def encode(text):
@@ -70,7 +70,7 @@ def readTextFromFile(path):
         return file.read()
 
 
-def saveTextToFile(path, text):
+def saveTextToFile(text, path):
     """Write a string to a text file."""
     with open(path, "w", encoding="latin-1", newline="") as file:
         file.write(text)
@@ -84,7 +84,7 @@ def readCodeFromFile(path):
     return list(struct.unpack(f">{count}H", data[:count * 2]))
 
 
-def saveCodeToFile(path, codes):
+def saveCodeToFile(codes, path):
     """Write a list of codes to a binary file, 2 bytes per code."""
     with open(path, "wb") as file:
         file.write(struct.pack(f">{len(codes)}H", *codes))
