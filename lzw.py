@@ -26,9 +26,9 @@ def encode(text):
                 next_code += 1
             current = char
 
-    print(dictionary)
+    
     result.append(dictionary[current])
-    print(f"Result {result}")
+   
     return result
 
 
@@ -100,14 +100,14 @@ def compressionRatio(text, codes):
 def encodeFile(input_path, output_path):
     text = readTextFromFile(input_path)
     codes = encode(text)
-    saveCodeToFile(output_path, codes)
+    saveCodeToFile(codes, output_path)
     print(f"Compression ratio: {compressionRatio(text, codes)}%")
 
 
 def decodeFile(input_path, output_path):
     codes = readCodeFromFile(input_path)
     text = decode(codes)
-    saveTextToFile(output_path, text)
+    saveTextToFile(text, output_path)
 
 
 def main():
