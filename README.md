@@ -1,1 +1,4 @@
-LZW Project
+# LZW Project
+
+## Introduction
+- THis is my project
